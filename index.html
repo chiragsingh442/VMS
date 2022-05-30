@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Use of JQuery to Add Edit Delete Table Row </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel ="stylesheet" href="style.css">
+    <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+        }
+  
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+        }
+      </script>
+</head>
+<body>
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>VEHICLE CHECKIN</h1>
+      
+          <label for="VEHICLE NUMBER"><b>VEHICLE NUMBER</b></label>
+          <input type="text" placeholder="Enter VEHICLE NUMBER" name="VEHICLENUMBER" required>
+      
+          <label for="VEHICLE TYPE"><b>VEHICLE TYPE</b></label>
+          <input type="text" placeholder="ENTER VEHICLE TYPE" name="VEHICLETYPE" required>
+      
+          <label for="VEHICLE MODEL"><b>VEHICLE MODEL</b></label>
+          <input type="text" placeholder="ENTER VEHICLE MODEL" name="VEHICLEMODEL" required>
+      
+          <label for="PHONE"><b>PHONE</b></label>
+          <input type="text" placeholder="ENTER PHONE NUMBER" name="PHONE" required>
+      
+      
+      
+          
+      
+          <button type="submit" class="btn">CHECK IN</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+
+    
+    <div class="container">
+        <h1>VALET PARKING</h1>
+        <br />
+        <div class="topnav">
+            <a class="active" href="#home"><h2>DASHBOARD</h2></a>
+            <button type="button" onclick="openForm()"><H3>CHECK-IN</H3></button>
+          </div>
+        <div id="parkingdivcontainer">
+    
+</body>
+
+</html>
+
+<script type="text/javascript">
+    var vehicles = [
+            
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+            },
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+                
+            }
+            ,
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+                
+            },
+            {"Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+                
+            }
+            ,
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+            }
+            ,
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+                
+            }
+            ,
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+                
+            },
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+            },
+            {
+                "Vehicle no": "TN 09 CD 27",
+                "Vehicle model": "Audi A6",
+                "Vehicle Type": "4 Wheeler",
+                "Phone": "8987339288",
+                "Check-in": "09-04-2022 06:35:00AM",
+                "Actions":'CHECK OUT',
+            }
+    ]
+    convertJsontoHtmlTable();
+    function convertJsontoHtmlTable()
+    {
+
+    
+        var tablecolumns = [];
+        for (var i = 0; i < vehicles.length; i++) {
+            for (var key in vehicles[i]) {
+                if (tablecolumns.indexOf(key) === -1) {
+                    tablecolumns.push(key);
+                }
+            }
+        }
+
+        
+        var tablevehicle = document.createElement("table");
+        tablevehicle.classList.add("table");
+        tablevehicle.classList.add("table-striped");
+        tablevehicle.classList.add("table-bordered");
+        tablevehicle.classList.add("table-hover")
+
+        
+        var tr = tablevehicle.insertRow(-1);
+
+        for (var i = 0; i < tablecolumns.length; i++) {
+            
+            var th = document.createElement("th");
+            th.innerHTML = tablecolumns[i];
+            tr.appendChild(th);
+        }
+
+        
+        for (var i = 0; i < vehicles.length; i++) {
+            tr = tablevehicle.insertRow(-1);
+            for (var j = 0; j < tablecolumns.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = vehicles[i][tablecolumns[j]];
+            }
+        }
+
+        
+        var parkingdivcontainer = document.getElementById("parkingdivcontainer");
+        parkingdivcontainer.innerHTML = "";
+        parkingdivcontainer.appendChild(tablevehicle);
+    }
+</script>
